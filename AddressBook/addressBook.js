@@ -126,6 +126,17 @@ class AddressBookMain{
         console.log(personsByState);
     }
 
+    //Count person by city or state
+    countPersonsByCity(city){
+        let personsByCity = this.searchPersonByCity(city);
+        return personsByCity.reduce((total) => total+1, 0);
+    }
+
+    countPersonsByState(state){
+        let personsByState = this.searchPersonByState(state);
+        return personsByState.reduce((total) => total+1, 0);
+    }
+
 }
 
 
@@ -135,6 +146,7 @@ try{
     let addressbook2 = new AddressBook("Parimisha", "Kumari", "HNo 21", "Indore", "Madhya Pradesh", 452001, 9867654343, "pari@gmail.com");
     let addressbook3 = new AddressBook("Zeesha", "Tripathi", "MIG 112", "Bhopal", "Madhya Pradesh", 462022, 9876578423, "zeezee14sha@gmail.com");
     let addressbook4 = new AddressBook("Avastika", "Rajput", "Block B FlatNo 700", "Pune", "Maharastra", 488011, 5268923457, "avi99raj@gmail.com");
+    let addressbook5 = new AddressBook("Priya", "Sharma", "LIG 635", "Bhopal", "Madhya Pradesh", 462022, 1234567890, "priyu1234@gmail.com");
     
     //Create object of AddressBookMain class
     let addressBook = new AddressBookMain();
@@ -142,6 +154,7 @@ try{
     addressBook.addContact(addressbook2);
     addressBook.addContact(addressbook3);
     addressBook.addContact(addressbook4);
+    addressBook.addContact(addressbook5);
 
     //Display contacts
     addressBook.displayContacts();
@@ -176,6 +189,16 @@ try{
 
     //Search person by state
     addressBook.viewPersonsByState("Maharastra");
+    console.log("------------------------------------------------");
+
+    //Count person by city
+    let countByCity = addressBook.countPersonsByCity("Bhopal");
+    console.log("Number of persons in Bhopal: "+countByCity);
+    console.log("------------------------------------------------");
+
+    //Count person by state
+    let countByState = addressBook.countPersonsByState("Maharastra");
+    console.log("Number of persons in Maharastra: "+countByState);
     console.log("------------------------------------------------");
 }catch(error){
     console.error(error); //Display error
