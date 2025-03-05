@@ -83,6 +83,13 @@ class AddressBookMain{
         }
     }
 
+    //Find by first name and last name
+    findBYName(firstName, LastName, updatedContact){
+        let findIndex = this.contactArray.findIndex(contact => contact.firstName == firstName && contact.LastName == LastName);
+
+        if(this.contactArray[findIndex] === undefined) throw "Contact not found";
+        this.contactArray[findIndex] = updatedContact;
+    }
 }
 
 
@@ -100,6 +107,13 @@ try{
 
     //Display contacts
     addressBook.displayContacts();
+
+    //Find by name and update the details in the contact
+    let updatedContact = new AddressBook("Kanchan", "Singh", "MB 2001", "Mumbai", "Maharastra", 475011, 1234567890, "kanchu@gmail.com");
+    addressBook.findBYName("Kanchan", "Singh", updatedContact);
+    //Display updated contacts
+    addressBook.displayContacts();
+
 }catch(error){
     console.error(error); //Display error
 }
