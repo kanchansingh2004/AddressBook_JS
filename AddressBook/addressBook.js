@@ -137,6 +137,11 @@ class AddressBookMain{
         return personsByState.reduce((total) => total+1, 0);
     }
 
+    //Sort contacts by name
+    sortContactsByName(){
+        return this.contactArray.sort((contact1, contact2) => (contact1.firstName).localeCompare(contact2.firstName));
+    }
+
 }
 
 
@@ -199,6 +204,11 @@ try{
     //Count person by state
     let countByState = addressBook.countPersonsByState("Maharastra");
     console.log("Number of persons in Maharastra: "+countByState);
+    console.log("------------------------------------------------");
+
+    //Sort contacts by name
+    let sortedContacts = addressBook.sortContactsByName();
+    console.log(sortedContacts);
     console.log("------------------------------------------------");
 }catch(error){
     console.error(error); //Display error
