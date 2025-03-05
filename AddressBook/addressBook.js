@@ -64,11 +64,42 @@ class AddressBook{
     }
 }
 
+//Create AddressBookMain class
+class AddressBookMain{
+    constructor(){
+        this.contactArray =[];
+    }
+
+    //Add contact to the array
+    addContact(contact){
+        this.contactArray.push(contact);
+    }
+
+    //Display contacts
+    displayContacts(){
+        //this.contactArray.forEach(contact => console.log(contact));
+        for(let contact of this.contactArray){
+            console.log(contact);
+        }
+    }
+
+}
+
 
 //Create object of AddressBook class and use try catch to handle exceptions
 try{
     let addressbook1 = new AddressBook("Kanchan", "Singh", "LIG 635", "Bhopal", "Madhya Pradesh", 462022, 1234567890, "kanchu@gmail.com");
-    console.log(addressbook1);  //Print the object
+    let addressbook2 = new AddressBook("Parimisha", "Kumari", "HNo 21", "Indore", "Madhya Pradesh", 452001, 9867654343, "pari@gmail.com");
+    let addressbook3 = new AddressBook("Zeesha", "Tripathi", "MIG 112", "Bhopal", "Madhya Pradesh", 462022, 9876578423, "zeezee14sha@gmail.com");
+    
+    //Create object of AddressBookMain class
+    let addressBook = new AddressBookMain();
+    addressBook.addContact(addressbook1);
+    addressBook.addContact(addressbook2);
+    addressBook.addContact(addressbook3);
+
+    //Display contacts
+    addressBook.displayContacts();
 }catch(error){
-    console.error(error);
+    console.error(error); //Display error
 }
