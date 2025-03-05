@@ -126,7 +126,6 @@ class AddressBookMain{
         console.log(personsByState);
     }
 
-
 }
 
 
@@ -178,7 +177,6 @@ try{
     //Search person by state
     addressBook.viewPersonsByState("Maharastra");
     console.log("------------------------------------------------");
-
 }catch(error){
     console.error(error); //Display error
 }
