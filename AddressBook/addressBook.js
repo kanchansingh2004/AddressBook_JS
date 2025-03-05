@@ -105,6 +105,28 @@ class AddressBookMain{
     totalContacts(){
         return this.contactArray.reduce((total) => total+1, 0);
     }
+
+    //Search person in a particular city or state
+    searchPersonByCity(city){
+        return this.contactArray.filter(contact => contact.city == city);
+    }
+
+    searchPersonByState(state){
+        return this.contactArray.filter(contact => contact.state == state);
+    }
+
+    //View persons by city or state
+    viewPersonsByCity(city){
+        let personsByCity = this.searchPersonByCity(city);
+        console.log(personsByCity);
+    }
+
+    viewPersonsByState(state){
+        let personsByState = this.searchPersonByState(state);
+        console.log(personsByState);
+    }
+
+
 }
 
 
@@ -124,27 +146,39 @@ try{
 
     //Display contacts
     addressBook.displayContacts();
+    console.log("-----------------------------------------------------");
 
     //Find by name and update the details in the contact
     let updatedContact = new AddressBook("Kanchan", "Singh", "MB 2001", "Mumbai", "Maharastra", 475011, 1234567890, "kanchu@gmail.com");
     addressBook.findBYName("Kanchan", "Singh", updatedContact);
     //Display updated contacts
     addressBook.displayContacts();
+    console.log("------------------------------------------------");
 
     //Delete contact by name
     addressBook.deleteContact("Parimisha", "Kumari");
     //Display contacts
     addressBook.displayContacts();
-
+    console.log("------------------------------------------------");
 
     //Total number of contacts
     let totalContacts = addressBook.totalContacts();
     console.log("Total number of contacts: "+totalContacts);
+    console.log("------------------------------------------------");
 
     //Add duplicate contact
     addressBook.addContact(addressbook1);
     //Display contacts
     addressBook.displayContacts();
+
+    //Search person by city
+    addressBook.viewPersonsByCity("Bhopal");
+    console.log("------------------------------------------------");
+
+    //Search person by state
+    addressBook.viewPersonsByState("Maharastra");
+    console.log("------------------------------------------------");
+
 }catch(error){
     console.error(error); //Display error
 }
