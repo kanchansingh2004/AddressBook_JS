@@ -142,6 +142,31 @@ class AddressBookMain{
         return this.contactArray.sort((contact1, contact2) => (contact1.firstName).localeCompare(contact2.firstName));
     }
 
+    //Sort contacts by state, city or zip
+    sortByStateCityZip(){
+        this.contactArray.sort((a, b) => {
+            if (a.state < b.state) {
+                return -1;
+                }
+            if (a.state > b.state) {
+                return 1;
+                }
+            if (a.city < b.city) {
+                return -1;
+                }
+            if (a.city > b.city) {
+                return 1;
+                }
+            if (a.zip < b.zip) {
+                return -1;
+                }
+            if (a.zip > b.zip) {
+                return 1;
+                }
+                return 0;});
+        console.log("Contacts sorted by State, City, and Zip:");
+        this.displayContacts();
+        }
 }
 
 
@@ -209,6 +234,10 @@ try{
     //Sort contacts by name
     let sortedContacts = addressBook.sortContactsByName();
     console.log(sortedContacts);
+    console.log("------------------------------------------------");
+
+    //Sort contacts by state, city or zip
+    addressBook.sortByStateCityZip();
     console.log("------------------------------------------------");
 }catch(error){
     console.error(error); //Display error
