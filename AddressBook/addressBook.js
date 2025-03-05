@@ -40,7 +40,7 @@ class AddressBook{
 
     //Validate method for city
     validateCity(city){
-        return /^[A-Z][a-z]{4,}$/.test(city);
+        return /^[A-Z][a-z]{3,}$/.test(city);
     }
 
     //Validate method for state
@@ -90,6 +90,14 @@ class AddressBookMain{
         if(this.contactArray[findIndex] === undefined) throw "Contact not found";
         this.contactArray[findIndex] = updatedContact;
     }
+
+    //Delete contact by first name and last name
+    deleteContact(firstName, LastName){
+        let findIndex = this.contactArray.findIndex(contact => contact.firstName == firstName && contact.LastName == LastName);
+
+        if(this.contactArray[findIndex] === undefined) throw "Contact not found";
+        this.contactArray.splice(findIndex,1);
+    }
 }
 
 
@@ -98,12 +106,14 @@ try{
     let addressbook1 = new AddressBook("Kanchan", "Singh", "LIG 635", "Bhopal", "Madhya Pradesh", 462022, 1234567890, "kanchu@gmail.com");
     let addressbook2 = new AddressBook("Parimisha", "Kumari", "HNo 21", "Indore", "Madhya Pradesh", 452001, 9867654343, "pari@gmail.com");
     let addressbook3 = new AddressBook("Zeesha", "Tripathi", "MIG 112", "Bhopal", "Madhya Pradesh", 462022, 9876578423, "zeezee14sha@gmail.com");
+    let addressbook4 = new AddressBook("Avastika", "Rajput", "Block B FlatNo 700", "Pune", "Maharastra", 488011, 5268923457, "avi99raj@gmail.com");
     
     //Create object of AddressBookMain class
     let addressBook = new AddressBookMain();
     addressBook.addContact(addressbook1);
     addressBook.addContact(addressbook2);
     addressBook.addContact(addressbook3);
+    addressBook.addContact(addressbook4);
 
     //Display contacts
     addressBook.displayContacts();
@@ -112,6 +122,11 @@ try{
     let updatedContact = new AddressBook("Kanchan", "Singh", "MB 2001", "Mumbai", "Maharastra", 475011, 1234567890, "kanchu@gmail.com");
     addressBook.findBYName("Kanchan", "Singh", updatedContact);
     //Display updated contacts
+    addressBook.displayContacts();
+
+    //Delete contact by name
+    addressBook.deleteContact("Parimisha", "Kumari");
+    //Display contacts
     addressBook.displayContacts();
 
 }catch(error){
