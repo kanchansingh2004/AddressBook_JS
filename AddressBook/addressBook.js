@@ -70,8 +70,10 @@ class AddressBookMain{
         this.contactArray =[];
     }
 
-    //Add contact to the array
+    //Add contact to the array and check duplicate contact
     addContact(contact){
+        let findContact  = this.contactArray.find(c => c.firstName == contact.firstName && c.LastName == contact.LastName);
+        if(findContact) throw "Contact already exists. Can be updated but not added";
         this.contactArray.push(contact);
     }
 
@@ -139,7 +141,10 @@ try{
     let totalContacts = addressBook.totalContacts();
     console.log("Total number of contacts: "+totalContacts);
 
-    
+    //Add duplicate contact
+    addressBook.addContact(addressbook1);
+    //Display contacts
+    addressBook.displayContacts();
 }catch(error){
     console.error(error); //Display error
 }
