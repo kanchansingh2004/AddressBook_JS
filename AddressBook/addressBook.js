@@ -98,6 +98,11 @@ class AddressBookMain{
         if(this.contactArray[findIndex] === undefined) throw "Contact not found";
         this.contactArray.splice(findIndex,1);
     }
+
+    //Get total number of contacts
+    totalContacts(){
+        return this.contactArray.reduce((total) => total+1, 0);
+    }
 }
 
 
@@ -129,6 +134,12 @@ try{
     //Display contacts
     addressBook.displayContacts();
 
+
+    //Total number of contacts
+    let totalContacts = addressBook.totalContacts();
+    console.log("Total number of contacts: "+totalContacts);
+
+    
 }catch(error){
     console.error(error); //Display error
 }
